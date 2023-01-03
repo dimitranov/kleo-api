@@ -21,7 +21,7 @@ projectSchema.virtual('tasks', {
   foreignField: 'project',
 });
 
-projectSchema.plugin(paginate);
+projectSchema.plugin<any>(paginate);
 projectSchema.plugin(toJSON);
 const Project = mongoose.model<IProjectDoc, IProjectModel>('Project', projectSchema);
 

@@ -54,7 +54,7 @@ const userSchema = new mongoose.Schema<IUserDoc, IUserModel>(
 
 // add plugin that converts mongoose to json
 userSchema.plugin(toJSON);
-userSchema.plugin(paginate);
+userSchema.plugin<any>(paginate);
 
 /**
  * Check if email is taken

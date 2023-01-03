@@ -29,6 +29,7 @@ export default class ExerciseController {
   });
 
   public static getAllExercisePaginated = catchAsync(async (req: Request, res: Response) => {
+    console.log(req.cookies);
     const filter = pick(req.query, ['name', 'muscle']);
     const options: IOptions = pick(req.query, ['sortBy', 'limit', 'page']);
     const result = await ExerciseServise.getAllExercisePaginated(filter, options);

@@ -30,7 +30,7 @@ const workoutSchema = new mongoose.Schema<IWorkoutDoc, IWorkoutModel>({
   },
 });
 
-workoutSchema.plugin(paginate);
+workoutSchema.plugin<any>(paginate);
 
 workoutSchema.pre('save', function (next) {
   if (this.readOnly) {
@@ -43,7 +43,7 @@ workoutSchema.pre('save', function (next) {
 workoutSchema.pre(/^find/, function (next) {
   const optiosn = this.getOptions();
 
-  if (optiosn.skipPopulate) {
+  if (optiosn['skipPopulate']) {
     console.log('SKIPED POPULATIOn');
     return next();
   }

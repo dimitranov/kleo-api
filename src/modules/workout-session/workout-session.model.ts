@@ -31,7 +31,7 @@ const workoutSessionSchema = new mongoose.Schema<IWorkoutSessionDoc, IWorkoutSes
   },
 });
 
-workoutSessionSchema.plugin(paginate);
+workoutSessionSchema.plugin<any>(paginate);
 
 workoutSessionSchema.pre(/^find/, function (next) {
   this.populate([

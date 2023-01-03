@@ -6,6 +6,7 @@ import compression from 'compression';
 import cors from 'cors';
 import passport from 'passport';
 import httpStatus from 'http-status';
+import cookieParser from 'cookie-parser';
 import config from './config/config';
 import { morgan } from './modules/logger';
 import { jwtStrategy } from './modules/auth';
@@ -29,6 +30,8 @@ app.options('*', cors());
 
 // parse json request body
 app.use(express.json());
+
+app.use(cookieParser());
 
 // parse urlencoded request body
 app.use(express.urlencoded({ extended: true }));
