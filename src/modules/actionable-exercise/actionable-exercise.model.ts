@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { IActionableExerciseDoc, IActionableExerciseModel } from './actionable-exercise.interface';
+import { IActionableExerciseDoc, IActionableExerciseModel, SetIntensity, SetType } from './actionable-exercise.interface';
 import { UnitsOfMass } from '../utils/commonTypes';
 
 const actionableExerciseSchema = new mongoose.Schema<IActionableExerciseDoc, IActionableExerciseModel>({
@@ -16,12 +16,26 @@ const actionableExerciseSchema = new mongoose.Schema<IActionableExerciseDoc, IAc
         weight: {
           type: Number,
         },
+        intensity: {
+          type: String,
+          enum: {
+            values: Object.values(SetIntensity),
+          },
+          default: SetIntensity.MEDIUM,
+        },
+        type: {
+          type: String,
+          enum: {
+            values: Object.values(SetType),
+          },
+          default: SetType.REGULAR,
+        },
       },
     ],
-    deafult: [],
+    default: [],
   },
   units: {
-    type: 'String',
+    type: String,
     enum: {
       values: Object.values(UnitsOfMass),
     },

@@ -7,6 +7,11 @@ router.route('/').post(ActionableExerciseController.create);
 
 router.route('/:id').patch(ActionableExerciseController.update);
 
-router.route('/:id/:setId').patch(ActionableExerciseController.updateSet).delete();
+router.route('/:id/sets').post(ActionableExerciseController.addSet);
+
+router
+  .route('/:id/sets/:setId')
+  .patch(ActionableExerciseController.updateSet)
+  .delete(ActionableExerciseController.deleteSet);
 
 export default router;
